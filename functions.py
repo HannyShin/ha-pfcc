@@ -31,7 +31,7 @@ def bed1_handler():
         buzzer.freq(300)
         buzzer.duty_u16(60000)
 
-def off_btn_handler():
+def off_handler():
     global off_prev_state
     if (off_btn.value() == True) and (off_prev_state == False):
         off_prev_state = True
