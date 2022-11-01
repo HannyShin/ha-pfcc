@@ -1,0 +1,61 @@
+import machine
+from machine import Pin, PWM
+import utime
+
+LED1 = machine.Pin(0, machine.Pin.OUT)
+# LED2 = Pin(15, Pin.OUT)
+# ALL_LED = Pin(0, Pin.OUT)
+buzzer = PWM(Pin(22))
+# 
+# LED = machine.Pin(25,machine.Pin.OUT)
+# # 
+# # bed1 = Pin(1, Pin.IN, Pin.PULL_DOWN)
+# # bed2 = Pin(26, Pin.IN, Pin.PULL_DOWN)
+# # bed3 = Pin(17, Pin.IN, Pin.PULL_DOWN)
+# # bed4 = Pin(18, Pin.IN, Pin.PULL_DOWN)
+# # bth1 = Pin(14, Pin.IN, Pin.PULL_DOWN)
+# # off_all = Pin(4, Pin.IN, Pin.PULL_DOWN)
+# 
+bed1_btn = machine.Pin(1,machine.Pin.IN,machine.Pin.PULL_DOWN)
+bed1_prev_state = bed1_btn.value()
+off_btn = Pin(4,Pin.IN,Pin.PULL_DOWN)
+off_prev_state = off_btn.value()
+ 
+def bed1_down_handler():
+    global bed1_prev_state
+    if (bed1_btn.value() == True) and (bed1_prev_state == False):
+        bed1_prev_state = True
+        
+        print("Bed 1 has been pressed")
+    elif (bed1_btn.value() == False) and (bed1_prev_state == True):
+        bed1_prev_state = False
+        LED1.value(1)
+        buzzer.freq(300)
+        buzzer.duty_u16(60000)
+
+def off_btn_handler():
+    global off_prev_state
+    if (off_btn.value() == True) and (off_prev_state == False):
+        off_prev_state = True
+        
+        print("Bed 1 has been answered")
+    elif (off_btn.value() == False) and (off_prev_state == True):
+        off_prev_state = False
+        LED1.value(0)
+        buzzer.duty_u16(0)
+        
+print("Ready, Set, Go!")
+while True:
+    
+    bed1_down_handler()
+    utime.sleep_ms(400)
+    off_btn_handler()
+    utime.sleep_ms(400)
+# while True:   
+#    
+#     if bed1.value() == 0:
+#         LED1.value(1)
+#         buzzer.freq(300)
+#         buzzer.duty_u16(60000)
+
+
