@@ -3,7 +3,7 @@ from machine import Pin, PWM
 import utime
 import functions
 
-LED1 = machine.Pin(0, Pin.OUT)
+LED1 = Pin(0, Pin.OUT)
 LED2 = Pin(15, Pin.OUT)
 buzzer = PWM(Pin(22))
 
@@ -14,7 +14,7 @@ buzzer = PWM(Pin(22))
 # # bth1 = Pin(14, Pin.IN, Pin.PULL_DOWN)
 # # off_all = Pin(4, Pin.IN, Pin.PULL_DOWN)
 # 
-bed1_btn = machine.Pin(1,machine.Pin.IN,machine.Pin.PULL_DOWN)
+bed1_btn = Pin(1,Pin.IN,Pin.PULL_DOWN)
 bed1_prev_state = bed1_btn.value()
 off_btn = Pin(4,Pin.IN,Pin.PULL_DOWN)
 off_prev_state = off_btn.value()
