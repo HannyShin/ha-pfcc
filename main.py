@@ -2,7 +2,7 @@ import machine
 from machine import Pin, PWM
 import utime
 import functions
-from functions import (bed1_down_handler, off_btn_handler)
+from functions import (bed1_handler, off_btn_handler)
 
 
 while True:
