@@ -30,6 +30,7 @@ def bed1_handler():
         LED1.value(1)
         buzzer.freq(300)
         buzzer.duty_u16(60000)
+        utime.sleep_ms(400)
 
 def off_handler():
     global off_prev_state
@@ -41,5 +42,6 @@ def off_handler():
         off_prev_state = False
         LED1.value(0)
         buzzer.duty_u16(0)
+        utime.sleep_ms(400)
         
 print("Ready, Set, Go!")
