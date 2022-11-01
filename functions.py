@@ -23,25 +23,25 @@ def bed1_handler():
     global bed1_prev_state
     if (bed1_btn.value() == True) and (bed1_prev_state == False):
         bed1_prev_state = True
-        
-        print("Bed 1 has been pressed")
+
     elif (bed1_btn.value() == False) and (bed1_prev_state == True):
         bed1_prev_state = False
         LED1.value(1)
         buzzer.freq(300)
         buzzer.duty_u16(60000)
         utime.sleep_ms(400)
+        print("Bed 1 has been pressed")
 
 def off_handler():
     global off_prev_state
     if (off_btn.value() == True) and (off_prev_state == False):
         off_prev_state = True
         
-        print("Bed 1 has been answered")
     elif (off_btn.value() == False) and (off_prev_state == True):
         off_prev_state = False
         LED1.value(0)
         buzzer.duty_u16(0)
         utime.sleep_ms(400)
+        print("Bed 1 has been answered")
         
-print("Ready, Set, Go!")
+print("Running")
